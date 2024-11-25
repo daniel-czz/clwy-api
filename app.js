@@ -11,6 +11,10 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const categoriesRouter = require('./routes/categories')
 const coursesRouter = require('./routes/courses');
+const chaptersRouter = require('./routes/chapters')
+const articlesRouter = require('./routes/articles')
+const settingsRouter = require('./routes/settings');
+const searchRouter = require('./routes/search');
 
 // 后台 
 const adminArticlesRouter = require('./routes/admin/articles');
@@ -21,6 +25,7 @@ const adminCoursesRouter = require('./routes/admin/courses');
 const adminChaptersRouter = require('./routes/admin/chapters');
 const adminChartsRouter = require('./routes/admin/charts');
 const adminAuthRouter = require('./routes/admin/auth');
+
 
 
 
@@ -37,6 +42,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter)
 app.use('/courses', coursesRouter)
+app.use('/chapters', chaptersRouter)
+app.use('/articles', articlesRouter)
+app.use('/settings', settingsRouter)
+app.use('/search', searchRouter)
+
+
+
+
 
 // 后台路由文件 
 app.use('/admin/articles', adminAuth, adminArticlesRouter)
