@@ -1,0 +1,2 @@
+jwt -  npm i jsonwebtoken
+dotenv - npm i dotenv (控制环境变量)
