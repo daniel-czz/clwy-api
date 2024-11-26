@@ -5,16 +5,19 @@ const logger = require('morgan');
 require('dotenv').config() 
 
 const adminAuth = require('./middlewares/admin_auth')
+const userAuth = require('./middlewares/user_auth')
 
 // 前端 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const categoriesRouter = require('./routes/categories')
 const coursesRouter = require('./routes/courses');
 const chaptersRouter = require('./routes/chapters')
 const articlesRouter = require('./routes/articles')
 const settingsRouter = require('./routes/settings');
 const searchRouter = require('./routes/search');
+const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/users')
+const likesRouter = require('./routes/likes');
 
 // 后台 
 const adminArticlesRouter = require('./routes/admin/articles');
@@ -39,16 +42,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 前台理由文件
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter)
 app.use('/courses', coursesRouter)
 app.use('/chapters', chaptersRouter)
 app.use('/articles', articlesRouter)
 app.use('/settings', settingsRouter)
 app.use('/search', searchRouter)
-
-
-
+app.use('/auth', authRouter)
+app.use('/users', userAuth, usersRouter)
+app.use('/likes', userAuth, likesRouter);
 
 
 // 后台路由文件 
